@@ -22,6 +22,9 @@ app.add_url_rule('/', 'home', view_func=views.home)
 # API Test
 app.add_url_rule('/apitest', 'apiTest', view_func=views.api_test)
 
+# Wallet Totals
+app.add_url_rule('/wallettotal', 'walletTotal', view_func=views.wallet_total)
+
 # Say hello
 app.add_url_rule('/hello/<username>', 'say_hello', view_func=views.say_hello)
 

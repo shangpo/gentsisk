@@ -38,6 +38,21 @@ def api_test():
 
     return render_template('list_alliances.html', alliances=result.alliances)
 
+
+def wallet_total():
+    eveapi = api.get_api();
+
+    wallet = eveapi.corp.AccountBalance(characterID=settings.API_CHARACTERID)
+    
+    isk = []
+
+    for i in range(7):
+        isk.append(wallet.accounts[i].balance)
+
+    return render_template('wallets.html', isk)
+
+
+
 @login_required
 def list_examples():
     """List all examples"""

@@ -11,7 +11,7 @@ Important: Place your keys in the secret_keys.py module,
 import os
 
 from secret_keys import CSRF_SECRET_KEY, SESSION_KEY
-from api_keys import API_KEYID, API_VCODE
+from api_keys import API_KEYID, API_VCODE, API_CHARACTERID
 
 
 DEBUG_MODE = False
