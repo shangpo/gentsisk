@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block style_block %}
+    <style type="text/css">
+        table.table { width: 60%; }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+    <h1 id="">All Examples</h1>
+    <div>&nbsp;</div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for amount in isk %}
+            <tr>
+                <td>{{ amount }}</td>
+                <td>{{ amount.isk }}</td>
+            </tr>
+            {% else %}
+            <tr><td colspan="6">No examples yet</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p>
+        <a class="btn btn-primary" data-toggle="modal" data-target="#new-example-modal">
+            <i class="icon-plus-sign icon-white"></i>
+            Add Alliance
+        </a>
+    </p>
+
+{% endblock content %}
+
+
