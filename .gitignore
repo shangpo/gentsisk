@@ -34,6 +34,8 @@ nosetests.xml
 .project
 .pydevproject
 
+*.swp
+
 
 secret_keys.py
 api_keys.py
