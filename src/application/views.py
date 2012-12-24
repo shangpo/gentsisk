@@ -20,7 +20,7 @@ from decorators import login_required, admin_required
 from forms import ExampleForm
 
 from api_keys import *
-from eveapi import eveapi
+import api
 
 
 def home():
@@ -32,9 +32,9 @@ def say_hello(username):
     return 'Hello %s' % username
 
 def api_test():
-    api = eveapi.EVEAPIConnection()
+    eveapi = api.get_api();
 
-    result = api.eve.AllianceList()
+    result = eveapi.eve.AllianceList()
 
     return render_template('list_alliances.html', alliances=result.alliances)
 
