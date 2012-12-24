@@ -19,6 +19,9 @@ from models import ExampleModel
 from decorators import login_required, admin_required
 from forms import ExampleForm
 
+from api_keys import *
+from eveapi import eveapi
+
 
 def home():
     return redirect(url_for('list_examples'))
@@ -28,6 +31,12 @@ def say_hello(username):
     """Contrived example to demonstrate Flask's url routing capabilities"""
     return 'Hello %s' % username
 
+def api_test():
+    api = eveapi.EVEAPIConnection()
+
+    result = api.eve.AllianceList()
+
+    return render_template('list_alliances.html', alliances=result.alliances)
 
 @login_required
 def list_examples():

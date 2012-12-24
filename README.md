@@ -19,6 +19,17 @@ Installation
     cd src/application
     python generate_keys.py
 </pre>
+* Create the api\_keys.py file for storing the API KEY details in
+<pre class="console">
+    cd src/application
+    vim api_keys.py
+</pre>
+* Put the following within the api\_keys.py file placing the appropriate key details in each constant.
+<pre>
+    # API Keys
+    API_KEYID = ''
+    API_VCODE = ''
+</pre>
 * Start the GAE dev\_server.py
 <pre class="console">
     ~/google_appengine/dev_appserver.py src/ -a <ipaddress> --high_replication --use_sqlite

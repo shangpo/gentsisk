@@ -33,4 +33,7 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+
+
 secret_keys.py
+api_keys.py

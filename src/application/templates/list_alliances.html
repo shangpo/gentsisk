@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block style_block %}
+    <style type="text/css">
+        table.table { width: 60%; }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+    <h1 id="">All Examples</h1>
+    <div>&nbsp;</div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Ticker</th>
+                <th>Member Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for alliance in alliances %}
+            <tr>
+                <td>{{ alliance.allianceID }}</td>
+                <td>{{ alliance.name }}</td>
+                <td>{{ alliance.shortName }}</td>
+                <td>{{ alliance.memberCount }}</td>
+            </tr>
+            {% else %}
+            <tr><td colspan="6">No examples yet</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p>
+        <a class="btn btn-primary" data-toggle="modal" data-target="#new-example-modal">
+            <i class="icon-plus-sign icon-white"></i>
+            Add Alliance
+        </a>
+    </p>
+
+{% endblock content %}
+
+
