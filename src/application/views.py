@@ -45,11 +45,10 @@ def wallet_total():
 
     wallet = eveapi.corp.AccountBalance(characterID=settings.API_CHARACTERID)
     
-    isk = []
+    isk = {}
 
     for i in range(7):
-        isk.append(wallet.accounts[i].balance)
-
+        isk[wallet.accounts[i].accountKey] = wallet.accounts[i].balance
     return render_template('wallets.html', isk=isk)
 
 
