@@ -8,25 +8,25 @@
 
 {% block content %}
 
-    <h1 id="">All Examples</h1>
+    <h1 id="">Wallet Balances</h1>
     <div>&nbsp;</div>
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Wallet</th>
-                <th>Amount</th>
+                <th style="text-align:right">Amount</th>
             </tr>
         </thead>
         <tbody>
-            {% for accountKey, amount in isk %}
+            {% for accountKey,walletName in walletNames.items() %}
             <tr>
                 <td>{{ loop.index }}</td>
-                <td>{{ accountkey }}</td>
-                <td>{{ amount|format_isk }}</td>
+                <td>{{ walletName }}</td>
+                <td style="text-align:right">{{ walletBalances[accountKey]|format_isk }}</td>
             </tr>
             {% else %}
-            <tr><td colspan="2">No examples yet</td></tr>
+            <tr><td colspan="3">No examples yet</td></tr>
             {% endfor %}
         </tbody>
     </table>

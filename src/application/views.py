@@ -22,6 +22,7 @@ from forms import ExampleForm
 from api_keys import *
 import api
 import settings
+import logging
 
 
 def home():
@@ -43,13 +44,23 @@ def api_test():
 def wallet_total():
     eveapi = api.get_api();
 
-    wallet = eveapi.corp.AccountBalance(characterID=settings.API_CHARACTERID)
-    
-    isk = {}
+    corpDetails = eveapi.corp.CorporationSheet()
+    walletNames = {}
 
-    for i in range(7):
-        isk[wallet.accounts[i].accountKey] = wallet.accounts[i].balance
-    return render_template('wallets.html', isk=isk)
+    for accountKey,description in corpDetails.walletDivisions.Select("accountKey", "description"):
+        walletNames[accountKey] = description
+
+    logging.info(walletNames)
+
+    wallet = eveapi.corp.AccountBalance(characterID=settings.API_CHARACTERID)
+    walletBalances = {}
+
+    for accountKey,balance in wallet.accounts.Select("accountKey", "balance"):
+        walletBalances[accountKey] = balance
+
+    logging.info(walletBalances)
+
+    return render_template('wallets.html', walletNames=walletNames, walletBalances=walletBalances)
 
 
 
