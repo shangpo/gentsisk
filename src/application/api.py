@@ -7,8 +7,10 @@ import logging
 def get_api():
     api = eveapi.EVEAPIConnection(cacheHandler=apiMemcacheHandler())
     if len(settings.API_KEYID) > 0 and len(settings.API_VCODE):
-        api.auth(keyID=settings.API_KEYID,
+        logging.info("Setting up authenticated API instance")
+        auth = api.auth(keyID=settings.API_KEYID,
                 vCode=settings.API_VCODE)
+        return auth
     return api
 
 class apiMemcacheHandler(object):
