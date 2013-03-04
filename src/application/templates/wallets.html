@@ -20,11 +20,11 @@
         <tbody>
             {% for amount in isk %}
             <tr>
-                <td>{{ amount }}</td>
-                <td>{{ amount.isk }}</td>
+                <td>{{ loop.index }}</td>
+                <td>{{ amount|format_isk }}</td>
             </tr>
             {% else %}
-            <tr><td colspan="6">No examples yet</td></tr>
+            <tr><td colspan="2">No examples yet</td></tr>
             {% endfor %}
         </tbody>
     </table>

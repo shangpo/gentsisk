@@ -21,6 +21,7 @@ from forms import ExampleForm
 
 from api_keys import *
 import api
+import settings
 
 
 def home():
@@ -49,7 +50,7 @@ def wallet_total():
     for i in range(7):
         isk.append(wallet.accounts[i].balance)
 
-    return render_template('wallets.html', isk)
+    return render_template('wallets.html', isk=isk)
 
 
 
@@ -100,4 +101,3 @@ def warmup():
 
     """
     return ''
-
